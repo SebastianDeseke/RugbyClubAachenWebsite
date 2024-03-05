@@ -28,3 +28,279 @@ body {
   height: 100%;
 }
 
+/*Rugby Club Aachen Website CSS*/
+
+.block {
+  margin-left:10px;
+  margin-right:10px;
+}
+.col-half {
+  width:30px;
+}
+.col-base-2 {
+  width:40px;
+}
+.col-1 {
+  width:60px;
+}
+.col-2 {
+  width:140px;
+}
+.col-3,
+.col-3.block {
+  width:220px;
+}
+.col-4,
+.masonry .block,
+.col-4.block {
+  width:300px;
+}
+.col-5 {
+  width:380px;
+}
+.col-6,
+.col-6.block {
+  width:460px;
+}
+.col-7,
+.col-7.block {
+  width:540px;
+}
+.col-8 {
+  width:620px;
+}
+.col-9,
+.col-9.block {
+  width:700px;
+}
+.col-10 {
+  width:780px;
+}
+.col-11 {
+  width:860px;
+}
+.col-12,
+.block {
+  width:940px;
+}
+.grid-column {
+  position:relative;
+  margin:0;
+}
+.grid-column.grid-column--right {
+  float:right;
+}
+.grid-column.col-3 .col-4,
+.grid-column.col-3 .col-5,
+.grid-column.col-3 .col-6,
+.grid-column.col-3 .col-7,
+.grid-column.col-3 .col-8,
+.grid-column.col-3 .col-9,
+.grid-column.col-3 .col-10,
+.grid-column.col-3 .col-11,
+.grid-column.col-3 .col-12 {
+  width:220px;
+}
+.grid-column.col-4 .col-5,
+.grid-column.col-4 .col-6,
+.grid-column.col-4 .col-7,
+.grid-column.col-4 .col-8,
+.grid-column.col-4 .col-9,
+.grid-column.col-4 .col-10,
+.grid-column.col-4 .col-11,
+.grid-column.col-4 .col-12 {
+  width:300px;
+}
+.grid-column.col-6 .col-7,
+.grid-column.col-6 .col-8,
+.grid-column.col-6 .col-9,
+.grid-column.col-6 .col-10,
+.grid-column.col-6 .col-11,
+.grid-column.col-6 .col-12 {
+  width:460px;
+}
+.grid-column.col-7 .col-8,
+.grid-column.col-7 .col-9,
+.grid-column.col-7 .col-10,
+.grid-column.col-7 .col-11,
+.grid-column.col-7 .col-12 {
+  width:540px;
+}
+.grid-column.col-8 .col-9,
+.grid-column.col-8 .col-10,
+.grid-column.col-8 .col-11,
+.grid-column.col-8 .col-12 {
+  width:620px;
+}
+.grid-column.col-9 .col-10,
+.grid-column.col-9 .col-11,
+.grid-column.col-9 .col-12 {
+  width:700px;
+}
+.grid-column.col-1 {
+  width:80px;
+}
+.grid-column.col-2 {
+  width:160px;
+}
+.grid-column.col-3 {
+  width:240px;
+}
+.grid-column.col-4 {
+  width:320px;
+}
+.grid-column.col-5 {
+  width:400px;
+}
+.grid-column.col-6 {
+  width:480px;
+}
+.grid-column.col-7 {
+  width:560px;
+}
+.grid-column.col-8 {
+  width:640px;
+}
+.grid-column.col-9 {
+  width:720px;
+}
+.grid-column.col-10 {
+  width:800px;
+}
+.grid-column.col-11 {
+  width:880px;
+}
+.grid-column.col-12 {
+  width:960px;
+}
+
+.content-block--calendar-block-list .calendar-item {
+  overflow:auto;
+  padding-left:0;
+  padding-right:0;
+}
+.content-block--calendar-block-list .calendar-item__header {
+  float:left;
+}
+.content-block--calendar-block-list .calendar-item__date-from {
+  float:left;
+  width:85px;
+  line-height:40px;
+}
+.content-block--calendar-block-list .calendar-item__date-from .calendar-item__date__day {
+  width:40px;
+  height:40px;
+  border-radius:40px;
+}
+.content-block--calendar-block-list .calendar-item__title {
+  float:left;
+  max-width:215px;
+  min-height:40px;
+  line-height:20px;
+  padding-top:10px;
+  word-wrap:break-word;
+}
+.content-block--calendar-block-list .calendar-item__content {
+  float:left;
+  clear:both;
+}
+.content-block--calendar-block-list .calendar-item__time {
+  float:left;
+  margin-right:10px;
+  clear:both;
+}
+.content-block--calendar-block-list .calendar-item__location {
+  float:left;
+  line-height:24px;
+}
+
+/* Clearfix CSS*/
+
+.clearfix {
+  zoom:1;
+}
+.clearfix:before,
+.clearfix:after {
+  content:"\0020";
+  display:block;
+  height:0;
+  overflow:hidden;
+}
+.clearfix:after {
+  clear:both;
+}
+@media (min-width: 992px) {
+  .clearfix-desktop {
+    zoom:1;
+  }
+  .clearfix-desktop:before,
+  .clearfix-desktop:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-desktop:after {
+    clear:both;
+  }
+  .clearfix-desktop:before,
+  .clearfix-desktop:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-desktop:after {
+    clear:both;
+  }
+}
+@media (min-width: 660px) and (max-width: 992px) {
+  .clearfix-tablet {
+    zoom:1;
+  }
+  .clearfix-tablet:before,
+  .clearfix-tablet:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-tablet:after {
+    clear:both;
+  }
+  .clearfix-tablet:before,
+  .clearfix-tablet:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-tablet:after {
+    clear:both;
+  }
+}
+@media (max-width: 660px) {
+  .clearfix-mobile {
+    zoom:1;
+  }
+  .clearfix-mobile:before,
+  .clearfix-mobile:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-mobile:after {
+    clear:both;
+  }
+  .clearfix-mobile:before,
+  .clearfix-mobile:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-mobile:after {
+    clear:both;
+  }
+}
