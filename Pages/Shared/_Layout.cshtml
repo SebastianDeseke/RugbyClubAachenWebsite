@@ -1,5 +1,7 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<!--switch case to determine which language to use -->
+
+<html lang="@ViewData["Language"]">
 
 <head>
     <meta charset="utf-8" />
@@ -38,6 +40,18 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                             </li>
                         </ul>
+                        <!--Language Dropdown -->
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Language
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#">English</a></li>
+                                <li><a class="dropdown-item" href="#">Deutsch</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
                     </div>
                 </div>
             </nav>
@@ -57,6 +71,7 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/fastclick.js" asp-append-version="true"></script>
 
         @await RenderSectionAsync("Scripts", required: false)
     </div>
