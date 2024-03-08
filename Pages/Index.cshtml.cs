@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RugbyClubAachenWeb.Controllers;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
-namespace RugbyClubAachenWeb.Pages;
+namespace RugbyClubAachenWeb;
 
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
+    LanguageController lg = new LanguageController();
 
     public IndexModel(ILogger<IndexModel> logger)
     {
@@ -35,6 +39,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        getLanguage();
+        lg.getLanguage(Request);
+        lg.SetLanguage((string)ViewData["Language"]);
     }
 }
