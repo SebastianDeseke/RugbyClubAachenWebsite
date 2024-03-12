@@ -20,6 +20,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseRequestLocalization();
+
 app.MapRazorPages();
 
 app.Run();

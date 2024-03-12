@@ -8,11 +8,14 @@ $(document).ready(function () {
         var language = $(this).attr('id');
 
         $.ajax({
-            url: '/Language/SetLanguage',
-            type: 'POST',
+            url: '/Language?language=' + language,
+            type: 'GET',
             data: { Language: language },
             success: function (response) {
-                console.log(response.message);
+                console.log(response);
+            },
+            error: function (error) {
+                console.log(error)
             }
         });
     });
