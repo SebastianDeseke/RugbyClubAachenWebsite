@@ -56,25 +56,15 @@
                     </div>
                 </div>
             </nav>
-            <--! Picture Carousel -->
-                <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
-                    <div class="carousel-inner">
+            <!-- Picture Carousel -->
+            <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+                <div class="carousel-inner">
+                    @for (int i = 1; i <= 5; i++)
+                    {
                         <div class="carousel-item active">
-                            <img src="..." class="d-block w-100" alt="Rugby Picture 1">
+                            <img src="..." class="d-block w-100" alt="Rugby Picture @i">
                         </div>
-                        <div class="carousel-item">
-                            <img src="..." class="d-block w-100" alt="Rugby Picture 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="..." class="d-block w-100" alt="Rugby Picture 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="..." class="d-block w-100" alt="Rugby Picture 4">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="..." class="d-block w-100" alt="Rugby Picture 5">
-                        </div>
-                    </div>
+                    }
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -95,6 +85,21 @@
         </div>
 
         <footer class="border-top footer text-muted">
+            <!-- Sponsors in the footer -->
+            <div class="sponsors">
+                <div class="row">
+                    <h4>Our sponsors</h4>
+                </div>
+                <div id="sponsors-hook">
+                    <div class="row">
+                        <div class="col-2">
+                            <a href="https://www.viessmann.de/de/wohngebaeude/welche-heizung.html" target="_blank" title="Viessmann">
+                                <img src="sponsorlogos/43_10_viesman_new_1_1.jpg" alt="Viessmann">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 &copy; 2024 - RugbyClubAachenWeb - <a asp-area="" asp-page="/Privacy">Privacy</a>
             </div>

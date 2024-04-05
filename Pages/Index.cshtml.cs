@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 
-namespace RugbyClubAachenWeb;
+namespace RugbyClubAachenWeb.Pages;
 
 public class IndexModel : PageModel
 {
@@ -13,10 +13,6 @@ public class IndexModel : PageModel
     public IndexModel(ILogger<IndexModel> logger)
     {
         _logger = logger;
-    }
-
-    public void getPictures () {
-        Console.WriteLine("Pictures are loaded");
     }
 
         private object getLanguage(HttpRequest request)
@@ -42,9 +38,9 @@ public class IndexModel : PageModel
 
         return "en";
     }
-    
-    public IActionResult OnGet (string language) {
-        
+
+    public IActionResult getLocalLanguage (string language) {
+
         Console.WriteLine(HttpContext.Features.Get<IRequestCultureFeature>()?.RequestCulture.Culture.Name);
         string acceptLanguage = Request.Headers["Accept-Language"];
         string[] languages = acceptLanguage.Split(',');
@@ -64,6 +60,10 @@ public class IndexModel : PageModel
         }
 
         return new OkObjectResult("The Language is " + ViewData["Language"]);
+    }
+    
+    public void OnGet () {
+        
     }
 
 }
