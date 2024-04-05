@@ -25,6 +25,14 @@ public class DbConnections
         connection.Close();
     }
 
+    public void CarouselPicturePath (){
+        
+    }
+
+    public void AllPicturesPath (){
+
+    }
+
     /*
     public void CreateCustomer(string KundenId, string Title, string Vorname, string Nachname, string Firmenname, string Adresse, string Postleizahl, string Telefonnummer, string Email, string Umsatzsteuernummer, int preisKategorie){
     string sqlQuery = @"INSERT INTO 
