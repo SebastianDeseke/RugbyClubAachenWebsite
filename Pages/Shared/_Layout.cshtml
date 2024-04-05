@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
-<!--switch case to determine which language to use -->
+﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env;
+
+<!DOCTYPE html>
 
 <html lang="@ViewData["Language"]">
 
@@ -55,6 +56,37 @@
                     </div>
                 </div>
             </nav>
+            <--! Picture Carousel -->
+                <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="..." class="d-block w-100" alt="Rugby Picture 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="..." class="d-block w-100" alt="Rugby Picture 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="..." class="d-block w-100" alt="Rugby Picture 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="..." class="d-block w-100" alt="Rugby Picture 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="..." class="d-block w-100" alt="Rugby Picture 5">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
         </header>
         <div class="container">
             <main role="main" class="pb-3">

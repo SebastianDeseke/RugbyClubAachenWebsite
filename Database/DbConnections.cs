@@ -1,6 +1,6 @@
 using MySql.Data.MySqlClient;
 
-namespace RugbyClubAachenWeb;
+namespace RugbyClubAachenWeb.Database;
 
 public class DbConnections
 {

@@ -3,6 +3,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+//TODO: Add the file that feches the imagepathes to be injected in Layout.cshtml
+builder.Services.AddTransient<>;
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
