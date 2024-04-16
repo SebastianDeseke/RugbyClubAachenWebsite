@@ -51,14 +51,17 @@ public class DbConnections
         Disconnect();
     }
 
-    public void EditUser(string UID, string username, string UpdateInput, string UpdateValue)
+    public void EditUser(string UID, string UpdateInput, string UpdateValue)
     {
         string sqlQuery = @$"UPDATE users
-        SET {UpdateInput} = {UpdateValue}
+        SET {UpdateInput} = @UpdateValue
         WHERE UID = @UID";
 
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.Parameters.AddWithValue("UpdateValue", UpdateValue);
+        command.Parameters.AddWithValue("UID", UID);
 
         command.ExecuteNonQuery();
         command.Dispose();
@@ -74,13 +77,15 @@ public class DbConnections
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
+        command.Parameters.AddWithValue("@UID", UID);
+
         command.ExecuteNonQuery();
         command.Dispose();
         Disconnect();
 
     }
 
-    public void GetUser(string UID)
+    public void GetSingleUser(string UID)
     {
         string sqlQuery = @"SELECT * FROM users
         WHERE UID = @UID";
@@ -88,35 +93,106 @@ public class DbConnections
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
+        command.Parameters.AddWithValue("@UID", UID);
+
         command.ExecuteNonQuery();
         command.Dispose();
         Disconnect();
 
     }
 
-    public void UploadForm(){
+    public void UploadForm()
+    {
+        //Insert Into the database the information of the form
 
     }
 
-        public void CreatePicture() {
+    public void CreatePicture(string PictureID, string PicturePath, string AltText, string Author, string UploadTime)
+    {
+        string sqlQuery = @"INSERT INTO
+            pictures (pictureID, picturepath, altText, author, upload_time)
+            VALUES (@Value0, @Value1, @Value2, @Value3, @Value4)";
 
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.Parameters.AddWithValue("@Value0", PictureID);
+        command.Parameters.AddWithValue("@Value1", PicturePath);
+        command.Parameters.AddWithValue("@Value2", AltText);
+        command.Parameters.AddWithValue("@Value3", Author);
+        command.Parameters.AddWithValue("@Value4", UploadTime);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
     }
 
-    public void EditPicture() {
+    public void EditPicture(string PictureID, string UpdateInput, string UpdateValue)
+    {
         //edit the information of the picture, like for example the alt text or author
+        string sqlQuery = @$"UPDATE pictures
+        SET {UpdateInput} = @UpdateValue
+        WHERE pictureID = {PictureID}";
 
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.Parameters.AddWithValue("@UpdateValue", UpdateValue);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
     }
 
-    public void DeletePicture() {
+    public void DeletePicture(string PictureID)
+    {
+        string sqlQuery = @$"DELETE FROM pictures
+        WHERE pictureID = {PictureID}";
 
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
     }
 
-    public void GetAllPictures() {
+    public void GetSinglePicture(string PictureID)
+    {
+        string sqlQuery = @$"SELECT * FROM pictures
+        WHERE pictureID = {PictureID}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+    }
+
+    public void GetAllPictures()
+    {
         //get all the pictures from the database
+        string sqlQuery = @"SELECT * FROM pictures";
 
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
     }
 
-    public void FetchPicturesCarousel() {
+    public void FetchPicturesCarousel()
+    {
+        string sqlQuery = @"SELECT * FROM pictures
+        WHERE carousel = 1";
 
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
     }
 }

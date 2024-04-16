@@ -21,100 +21,96 @@
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <nav
-                class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">RugbyClubAachenWeb</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                        <!--Language Dropdown -->
-                        <li class="nav-item dropdown">
-                            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Language
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#" id="en">English</a></li>
-                                <li><a class="dropdown-item" href="#" id="de">Deutsch</a></li>
-                                <li><a class="dropdown-item" href="#" id="afr">Afrikaans</a></li>
-                            </ul>
-                        </li>
-                    </div>
-                </div>
-            </nav>
-            <!-- Picture Carousel -->
-            <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
-                <div class="carousel-inner">
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        <div class="carousel-item active">
-                            <img src="..." class="d-block w-100" alt="Rugby Picture @i">
-                        </div>
-                    }
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-
-        </header>
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-
-<div class="row">
-            <footer class="border-top footer text-muted">
-            <!-- Sponsors in the footer -->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                &copy; 2024 - RugbyClubAachenWeb - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">RugbyClubAachenWeb</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Gallery">Gallery</a>
+                        </li>
+                    </ul>
+                    <!--Language Dropdown -->
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Language
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#" id="en">English</a></li>
+                            <li><a class="dropdown-item" href="#" id="de">Deutsch</a></li>
+                            <li><a class="dropdown-item" href="#" id="afr">Afrikaans</a></li>
+                        </ul>
+                    </li>
+                </div>
             </div>
-        </footer>
-</div>
+        </nav>
+        <!-- Picture Carousel -->
+        <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-inner">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <div class="carousel-item active">
+                        <img src="..." class="d-block w-100" alt="Rugby Picture @i">
+                    </div>
+                }
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
 
-        <div class="sponsors">
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <div class="d-flex p-2">
+        <footer class="border-top footer text-muted">
+            <!-- Sponsors in the footer -->
+            <div class="sponsors">
                 <div class="row">
                     <h4>Our sponsors</h4>
                 </div>
                 <div id="sponsors-hook">
                     <div class="row">
                         <div class="col-2">
-                            <a href="https://www.viessmann.de/de/wohngebaeude/welche-heizung.html" target="_blank" title="Viessmann">
+                            <a href="https://www.viessmann.de/de/wohngebaeude/welche-heizung.html" target="_blank"
+                                title="Viessmann">
                                 <img src="~/sponsorlogos/43_10_viesman_new_1_1.jpg" alt="Viessmann">
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/js/fastclick.js" asp-append-version="true"></script>
-
-        @await RenderSectionAsync("Scripts", required: false)
+            &copy; 2024 - RugbyClubAachenWeb - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </footer>
     </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/fastclick.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>

@@ -21,8 +21,8 @@ public class UserFetcher
         Console.WriteLine("User is loaded");
     }
 
-    public void EditUser() {
-        db.EditUser();
+    public void EditUser(string UID, string UpdateInput, string UpdateValue) {
+        db.EditUser(UID, UpdateInput, UpdateValue);
         Console.WriteLine("User is edited");
     }
 }

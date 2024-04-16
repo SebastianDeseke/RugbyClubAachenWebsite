@@ -20,3 +20,11 @@ $(document).ready(function () {
         });
     });
 });
+
+// File upload validation
+const file = this.files[0];
+const  fileType = file['type'];
+const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+if (!validImageTypes.includes(fileType)) {
+    // invalid file type code goes here.
+}
