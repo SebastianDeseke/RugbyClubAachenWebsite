@@ -1,0 +1,193 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Sebastian CSS*/
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.imagesmall {
+  width: 50%;
+  height: 50%;
+}
+
+/*Rugby Club Aachen Website CSS*/
+
+.block {
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.sponsors {
+  margin-top:20px;
+  background-color:rgba(0,0,0,0.1);
+  margin-bottom:-60px;
+  padding-top:20px;
+  margin-top:40px;
+  padding-bottom:20px;
+}
+.sponsors h4 {
+  text-align:center;
+  font-size:16px;
+  margin-bottom:10px;
+}
+.sponsor {
+  background:#fefefe;
+}
+.sponsors-before-content-container .sponsors {
+  margin:0;
+  background:none;
+}
+
+.content-block--calendar-block-list .calendar-item {
+  overflow:auto;
+  padding-left:0;
+  padding-right:0;
+}
+.content-block--calendar-block-list .calendar-item__header {
+  float:left;
+}
+.content-block--calendar-block-list .calendar-item__date-from {
+  float:left;
+  width:85px;
+  line-height:40px;
+}
+.content-block--calendar-block-list .calendar-item__date-from .calendar-item__date__day {
+  width:40px;
+  height:40px;
+  border-radius:40px;
+}
+.content-block--calendar-block-list .calendar-item__title {
+  float:left;
+  max-width:215px;
+  min-height:40px;
+  line-height:20px;
+  padding-top:10px;
+  word-wrap:break-word;
+}
+.content-block--calendar-block-list .calendar-item__content {
+  float:left;
+  clear:both;
+}
+.content-block--calendar-block-list .calendar-item__time {
+  float:left;
+  margin-right:10px;
+  clear:both;
+}
+.content-block--calendar-block-list .calendar-item__location {
+  float:left;
+  line-height:24px;
+}
+
+/* Clearfix CSS*/
+
+.clearfix {
+  zoom:1;
+}
+.clearfix:before,
+.clearfix:after {
+  content:"\0020";
+  display:block;
+  height:0;
+  overflow:hidden;
+}
+.clearfix:after {
+  clear:both;
+}
+@media (min-width: 992px) {
+  .clearfix-desktop {
+    zoom:1;
+  }
+  .clearfix-desktop:before,
+  .clearfix-desktop:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-desktop:after {
+    clear:both;
+  }
+  .clearfix-desktop:before,
+  .clearfix-desktop:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-desktop:after {
+    clear:both;
+  }
+}
+@media (min-width: 660px) and (max-width: 992px) {
+  .clearfix-tablet {
+    zoom:1;
+  }
+  .clearfix-tablet:before,
+  .clearfix-tablet:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-tablet:after {
+    clear:both;
+  }
+  .clearfix-tablet:before,
+  .clearfix-tablet:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-tablet:after {
+    clear:both;
+  }
+}
+@media (max-width: 660px) {
+  .clearfix-mobile {
+    zoom:1;
+  }
+  .clearfix-mobile:before,
+  .clearfix-mobile:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-mobile:after {
+    clear:both;
+  }
+  .clearfix-mobile:before,
+  .clearfix-mobile:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  .clearfix-mobile:after {
+    clear:both;
+  }
+}
