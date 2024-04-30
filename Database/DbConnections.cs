@@ -6,15 +6,18 @@ public class DbConnections
 {
 
     MySqlConnection connection { get; set; }
+    private readonly IConfiguration _config;
 
-    public DbConnections()
+    public DbConnections(IConfiguration config)
     {
-
+        _config = config;
     }
+
+
 
     public void Connect()
     {
-        connection = new MySqlConnection("server=localhost;user id=root;password=;database=rca_db,port=3306");
+        connection = new MySqlConnection(_config["ConnectionStrings:DatabaseConnection"]);
         // Open the connection
         connection.Open();
     }

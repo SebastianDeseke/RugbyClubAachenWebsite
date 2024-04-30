@@ -12,12 +12,12 @@
 
 <!-- Here the upload option-->
 
-<div class="container">
+@* <div class="container">
     <form method="post" enctype="multipart/form-data">
         <input type="file" asp-for="Upload" />
         <input type="submit" />
     </form>
-</div>
+</div> *@
 
 <form enctype="multipart/form-data" method="post">
     <dl>
@@ -26,7 +26,7 @@
         </dt>
         <dd>
             <input asp-for="Upload" type="file" multiple>
-            <span asp-validation-for="Upload"></span>
+            <span asp-validation-for="Upload">Image incompatable</span>
         </dd>
     </dl>
     <input asp-page-handler="Upload" class="btn" type="submit" value="Upload" />

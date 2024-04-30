@@ -6,9 +6,9 @@ namespace RugbyClubAachenWeb.Pages;
     public class NewsModel : PageModel
     {
 
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<NewsModel> _logger;
 
-        public NewsModel(ILogger<IndexModel> logger)
+        public NewsModel(ILogger<NewsModel> logger)
         {
             _logger = logger;
         }
