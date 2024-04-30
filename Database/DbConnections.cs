@@ -28,22 +28,6 @@ public class DbConnections
         connection.Close();
     }
 
-<<<<<<< HEAD
-    public void CarouselPicturePath (){
-        
-    }
-
-    public void AllPicturesPath (){
-
-    }
-
-    /*
-    public void CreateCustomer(string KundenId, string Title, string Vorname, string Nachname, string Firmenname, string Adresse, string Postleizahl, string Telefonnummer, string Email, string Umsatzsteuernummer, int preisKategorie){
-    string sqlQuery = @"INSERT INTO 
-    kundendaten (KundenID, AnsprechTitle, AnsprechVorname, AnsprechNachname, Firmenname, Adresse, Postleizahl, Telefonnummer, Email, Umsatzsteuernummer, PreisKategorie)
-    VALUES (@Value0, @Value1, @Value2, @Value3, @Value4, @Value5, @Value6, @Value7, @Value8, @Value9, @Value10)";
-=======
->>>>>>> f743f7fafa505abaed422ebe2318514e5d0446a7
 
     public void CreateUser(string UID, string username, string name, string surname, string Email, string create_time, string password)
     {
