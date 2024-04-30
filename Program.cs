@@ -1,4 +1,6 @@
+using RugbyClubAachenWeb.Database;
 using RugbyClubAachenWeb.Fetchers;
+using RugbyClubAachenWeb.Pages;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,7 @@ builder.Services.AddRazorPages();
 
 //TODO: Add the file that feches the imagepathes to be injected in Layout.cshtml
 builder.Services.AddTransient<PictureFetcher>();
+builder.Services.AddTransient<DbConnections>();
 
 var app = builder.Build();
 

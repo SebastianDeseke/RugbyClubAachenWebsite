@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
+using RugbyClubAachenWeb.Database;
 
-namespace RugbyClubAachenWeb.Fetchers
-{
+namespace RugbyClubAachenWeb.Fetchers;
+
     public class PictureFetcher
     {
+<<<<<<< HEAD
         private string[] AllPictures;
         public string[] CarouselPictures = new string[5];
         public void getCarouselPictures()
@@ -38,6 +40,22 @@ namespace RugbyClubAachenWeb.Fetchers
             }
 
             Console.WriteLine("Pictures are loaded");
+=======
+        public string Picture { get; set; }
+        public string[] Pictures { get; set; }
+        DbConnections db = new DbConnections();
+
+        public void GetAllPictures()
+        {
+            db.GetAllPictures();
+            Console.WriteLine("All pictures are loaded");
+>>>>>>> f743f7fafa505abaed422ebe2318514e5d0446a7
         }
+
+        public void GetSinglePicture (string PictureID)
+        {
+            db.GetSinglePicture(PictureID);
+            Console.WriteLine("Picture is loaded");
+        }
+
     }
-}
