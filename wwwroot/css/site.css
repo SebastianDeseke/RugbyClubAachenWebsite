@@ -33,6 +33,12 @@ body {
   height: 50%;
 }
 
+.carouselimg {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
 /*Rugby Club Aachen Website CSS*/
 
 .block {
