@@ -173,10 +173,10 @@ public class DbConnections
         Disconnect();
     }
 
-    public void GetAllPictures()
+    public void GetAllPictures(int amount)
     {
         //get all the pictures from the database
-        string sqlQuery = @"SELECT * FROM pictures";
+        string sqlQuery = @$"SELECT * FROM pictures LIMIT {amount}";
 
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
@@ -186,7 +186,7 @@ public class DbConnections
         Disconnect();
     }
 
-    public void FetchPicturesCarousel()
+    public string[] FetchPicturesCarousel()
     {
         string sqlQuery = @"SELECT * FROM pictures
         WHERE carousel = 1";
@@ -194,8 +194,14 @@ public class DbConnections
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
+        //take the image paths and put them in an array
+        string[] paths = new string[5];
+        
+
         command.ExecuteNonQuery();
         command.Dispose();
         Disconnect();
+
+        return paths;
     }
 }
