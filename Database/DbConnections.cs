@@ -88,7 +88,7 @@ public class DbConnections
 
     }
 
-    public void GetSingleUser(string UID)
+    public string[] GetSingleUser(string UID)
     {
         string sqlQuery = @"SELECT * FROM users
         WHERE UID = @UID";
@@ -98,10 +98,26 @@ public class DbConnections
 
         command.Parameters.AddWithValue("@UID", UID);
 
-        command.ExecuteNonQuery();
-        command.Dispose();
-        Disconnect();
-
+        string[] userinfo = new string[7];
+        try
+        {
+            using (var reader = command.ExecuteReader())
+            {
+                int index = 0;
+                while (reader.Read() && index < userinfo.Length)
+                {
+                    //save user information in array
+                    userinfo[index] = reader.GetString(index);
+                    index++;
+                }
+            }
+        }
+        finally
+        {
+            command.Dispose();
+            Disconnect();
+        }
+        return userinfo;
     }
 
     public void UploadForm()
@@ -168,9 +184,24 @@ public class DbConnections
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
-        command.ExecuteNonQuery();
-        command.Dispose();
-        Disconnect();
+        string[] pictureinfo = new string[5];
+        try
+        {
+            using (var reader = command.ExecuteReader())
+            {
+                int index = 0;
+                while (reader.Read() && index < pictureinfo.Length)
+                {
+                    pictureinfo[index] = reader.GetString(index);
+                    index++;
+                }
+            }
+        }
+        finally
+        {
+            command.Dispose();
+            Disconnect();
+        }
     }
 
     public void GetAllPictures(int amount)
@@ -181,26 +212,57 @@ public class DbConnections
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
-        command.ExecuteNonQuery();
-        command.Dispose();
-        Disconnect();
+        string[] pictures = new string[amount];
+        try
+        {
+            using (var reader = command.ExecuteReader())
+            {
+                int index = 0;
+                while (reader.Read() && index < amount)
+                {
+                    pictures[index] = reader.GetString(index);
+                    index++;
+                }
+            }
+        }
+        finally
+        {
+            command.Dispose();
+            Disconnect();
+        }
+
     }
 
     public string[] FetchPicturesCarousel()
     {
-        string sqlQuery = @"SELECT * FROM pictures
-        WHERE carousel = 1";
+        string sqlQuery = @"SELECT image_path FROM pictures
+                        WHERE carousel = 1
+                        ORDER BY RAND()
+                        LIMIT 5";
 
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
         //take the image paths and put them in an array
         string[] paths = new string[5];
-        
-
-        command.ExecuteNonQuery();
-        command.Dispose();
-        Disconnect();
+        try
+        {
+            using (var reader = command.ExecuteReader())
+            {
+                int index = 0;
+                while (reader.Read() && index < 5)
+                {
+                    //paths[index] = reader["image_path"].ToString(); where image_path is the name of the column in the database
+                    paths[index] = reader.GetString(0);
+                    index++;
+                }
+            }
+        }
+        finally
+        {
+            command.Dispose();
+            Disconnect();
+        }
 
         return paths;
     }
