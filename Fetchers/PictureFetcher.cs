@@ -37,7 +37,7 @@ public class PictureFetcher
     public string showPictureCarousel(int i)
     {
         //string[] tmp = _db.FetchPicturesCarousel();
-        string[] tmp2 = new string[5] { "~/images/IMG-20240314-WA0001.jpg", "~/images/IMG-20240314-WA0002.jpg", "~/images/IMG-20240314-WA0003.jpg", "~/images/IMG-20240314-WA0004.jpg", "~/images/IMG-20240314-WA0005.jpg" };
+        string[] tmp2 = new string[5] { "/images/IMG-20240314-WA0001.jpg", "/images/IMG-20240314-WA0002.jpg", "/images/IMG-20240314-WA0003.jpg", "/images/IMG-20240314-WA0004.jpg", "/images/IMG-20240314-WA0005.jpg" };
         Console.WriteLine("Carousel pictures are loaded");
         //return tmp[i];
         return tmp2[i];
