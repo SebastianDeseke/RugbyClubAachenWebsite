@@ -10,13 +10,44 @@
 
 <!-- The Gallery displays 20 images at a time-->
 
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <!-- The header will be dynamic in the sens that it will show the date of the game and group the pictures together-->
+                <th>
+                    This is the image header
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @for (int i = 0; i < 7; i++)
+                {
+                    <td>
+                        This is the image
+                    </td>
+                }
+            </tr>
+            <tr>
+                @for (int i = 0; i < 7; i++)
+                {
+                    <td>
+                        This is the image name
+                    </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 <!-- Here the upload option-->
 
 @* <div class="container">
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" asp-for="Upload" />
-        <input type="submit" />
-    </form>
+<form method="post" enctype="multipart/form-data">
+<input type="file" asp-for="Upload" />
+<input type="submit" />
+</form>
 </div> *@
 
 <form enctype="multipart/form-data" method="post">

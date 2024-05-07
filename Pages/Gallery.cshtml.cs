@@ -14,17 +14,15 @@ public class GalleryModel : PageModel
     private readonly ILogger<GalleryModel> _logger;
     private readonly IWebHostEnvironment _env;
     private readonly DbConnections _db;
-    public GalleryModel(IWebHostEnvironment env, DbConnections db)
+    //PictureFetcher pictureFetcher = new PictureFetcher();
+
+
+    public GalleryModel(IWebHostEnvironment env, DbConnections db, ILogger<GalleryModel> logger)
     {
+        _logger = logger;
         _env = env;
         _db = db;
     }
-
-
-    //     public GalleryModel(ILogger<GalleryModel> logger)
-    // {
-    //     _logger = logger;
-    // }
 
     public string FileNameGenerator()
     {
@@ -33,7 +31,7 @@ public class GalleryModel : PageModel
         do
         {
             filename = Guid.NewGuid().ToString();
-            fullpath = Path.Combine(_env.ContentRootPath, "uploads", filename);
+            fullpath = Path.Combine(_env.ContentRootPath, "images", filename);
         } while (System.IO.File.Exists(fullpath));
         return filename;
     }
@@ -42,7 +40,7 @@ public class GalleryModel : PageModel
     public IFormFile Upload { get; set; }
     public async Task OnPostUploadAsync()
     {
-        var file = Path.Combine(_env.ContentRootPath, "uploads", FileNameGenerator());
+        var file = Path.Combine(_env.ContentRootPath, "images", FileNameGenerator());
         using (var fileStream = new FileStream(file, FileMode.Create))
         {
             await Upload.CopyToAsync(fileStream);

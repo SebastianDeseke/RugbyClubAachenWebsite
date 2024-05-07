@@ -8,7 +8,14 @@ public class UserFetcher
 {
     public string User { get; set; }
     public string[] Users { get; set; }
-    DbConnections db = new DbConnections();
+    private readonly DbConnections _db;
+    private readonly IConfiguration _config;
+
+    public UserFetcher(DbConnections db, IConfiguration config)
+    {
+        _db = db;
+        _config = config;
+    }
 
     public void GetAllUsers()
     {
@@ -17,12 +24,12 @@ public class UserFetcher
 
     public void GetSingleUser(string UID)
     {
-        db.GetSingleUser(UID);
+        _db.GetSingleUser(UID);
         Console.WriteLine("User is loaded");
     }
 
     public void EditUser(string UID, string UpdateInput, string UpdateValue) {
-        db.EditUser(UID, UpdateInput, UpdateValue);
+        _db.EditUser(UID, UpdateInput, UpdateValue);
         Console.WriteLine("User is edited");
     }
 }
