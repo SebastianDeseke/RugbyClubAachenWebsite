@@ -19,6 +19,8 @@ html {
 
 body {
   margin-bottom: 60px;
+  --sd-bg: linear-gradient(180deg, black 15% , yellow,  white ,yellow );
+  background-image: var(--sd-bg);
 }
 
 /* Sebastian CSS*/
@@ -39,6 +41,24 @@ body {
     object-fit: cover;
   }
 
+.navbar-colour {
+  /*copied from bg-white and replaced colour with black (dark)*/
+  --bs-bg-opacity: 1;
+  background-color: black;
+}
+
+.navbar-text, 
+.navbar-brand,
+.nav-link {
+  color: white !important;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
 /*Rugby Club Aachen Website CSS*/
 
 .block {
@@ -47,12 +67,12 @@ body {
 }
 
 .sponsors {
-  margin-top:20px;
   background-color:rgba(0,0,0,0.1);
-  margin-bottom:-60px;
-  padding-top:20px;
-  margin-top:40px;
-  padding-bottom:20px;
+  margin-bottom: -60px;
+  padding-top: 20px;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  text-align: center;
 }
 .sponsors h4 {
   text-align:center;
@@ -60,14 +80,21 @@ body {
   margin-bottom:10px;
 }
 .sponsor {
-  background:#fefefe;
+  background-color: rgb(r, g, b);
+  padding:5px;
+  margin: 5px;
+  display: inline-block;
 }
 .sponsors-before-content-container .sponsors {
   margin:0;
   background:none;
 }
 
-.content-block--calendar-block-list .calendar-item {
+.sponsor img {
+  max-width: 100%; /* Ensure images don't exceed their container */
+}
+
+/* .content-block--calendar-block-list .calendar-item {
   overflow:auto;
   padding-left:0;
   padding-right:0;
@@ -105,7 +132,7 @@ body {
 .content-block--calendar-block-list .calendar-item__location {
   float:left;
   line-height:24px;
-}
+} */
 
 /* Clearfix CSS*/
 
