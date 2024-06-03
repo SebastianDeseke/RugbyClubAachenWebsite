@@ -29,3 +29,27 @@ if (!validImageTypes.includes(fileType)) {
     // invalid file type code goes here.
     alert('invalid file type');
 }
+
+//Sticky sponsor footer (Chat GPT)
+$(document).ready(function(){
+    var sponsorSection = $('.sponsors');
+    var footer = $('.footer');
+    var footerOffset = footer.offset().top;
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > footerOffset) {
+            sponsorSection.css({
+                'position': 'absolute',
+                'bottom': '20px',
+                'width': '100%'
+            });
+        } else {
+            sponsorSection.css({
+                'position': 'fixed',
+                'bottom': '0',
+                'width': '100%'
+            });
+        }
+    });
+});
+
