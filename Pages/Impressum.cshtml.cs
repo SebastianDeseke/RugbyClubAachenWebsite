@@ -21,4 +21,8 @@ namespace RugbyClubAachenWeb.Pages;
             _db = db;
         }
 
+        public void OnGet()
+    {
+        ViewData["ShowCarousel"] = false;
+    }
     }
