@@ -47,6 +47,22 @@ public class GalleryModel : PageModel
         }
     }
 
+   /* public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> Upload)
+    {
+        foreach (var formFile in Upload)
+        {
+            if (formFile.ContentType.ToLower() != "image/jpeg" && formFile.ContentType.ToLower() != "image/png")
+            {
+                ModelState.AddModelError("Upload", "Only JPEG and PNG files are allowed.");
+                return Page();
+            }
+
+            // Rest of the file processing code...
+        }
+
+        return RedirectToPage("./Index");
+    } */
+
     public void OnGet()
     {
     }

@@ -24,50 +24,48 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar-colour navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">
-                    <img src="~/images/logo.png" alt="Rugby Club Aachen Logo" class="logo">
-                    <strong>Rugby Club Aachen</strong>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Gallery">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark"
-                                href="https://canterbury.nl/product-category/clubshops/aachen-rc/">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Impressum">Impressum</a>
-                    </ul>
-                    <!--Language Dropdown -->
-                    <li class="nav-item dropdown">
-                        <button class="btn btn-dark dropdown-toggle langbutton" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Language
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#" id="en">English</a></li>
-                            <li><a class="dropdown-item" href="#" id="de">Deutsch</a></li>
-                            <li><a class="dropdown-item" href="#" id="afr">Afrikaans</a></li>
+            <div class="wrapper">
+        <header>
+            <nav class="navbar-colour navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">
+                        <img src="~/images/logo.png" alt="Rugby Club Aachen Logo" class="logo">
+                        <strong>Rugby Club Aachen</strong>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Gallery">Gallery</a>
+                            </li>
                         </ul>
-                    </li>
+                        <!--Language Dropdown -->
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-dark dropdown-toggle langbutton" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Language
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#" id="en">English</a></li>
+                                <li><a class="dropdown-item" href="#" id="de">Deutsch</a></li>
+                                <li><a class="dropdown-item" href="#" id="fr">Français</a></li>
+                                <li><a class="dropdown-item" href="#" id="nl">Nederlands</a></li>
+                                <li><a class="dropdown-item" href="#" id="afr">Afrikaans</a></li>
+                            </ul>
+                        </li>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
         <!-- Picture Carousel -->
         @if (ViewData["ShowCarousel"] == null || (bool)ViewData["ShowCarousel"] == true)
@@ -99,56 +97,55 @@
             </main>
         </div>
 
-        <div class="d-flex p-2">
-            <footer class="border-top footer text-muted sponsors">
-                <!-- Sponsors in the footer -->
+    <footer class="border-top footer text-muted">
+        <!-- Sponsors in the footer -->
+            <div class="sponsors row">
+                <h4>Our sponsors</h4>
+            </div>
+            <div id="sponsors-hook">
                 <div class="row">
-                    <h4>Our sponsors</h4>
+                    <ul>
+                        <li class="sponsor col-2">
+                            <a href="https://www.viessmann.de/de/wohngebaeude/welche-heizung.html" target="_blank"
+                                title="Viessmann">
+                                <img src="~/sponsorlogos/43_10_viesman_new_1_1.jpg" alt="Viessmann">
+                            </a>
+                        </li>
+                        <li class="sponsor col-2">
+                            <a href="https://www.atesteo.com/" target="_blank" title="ATESTEO">
+                                <img src="~/sponsorlogos/43_10_atesteo_nieuw_1_1.jpg" alt="ATESTEO">
+                            </a>
+                        </li>
+                        <li class="sponsor col-2">
+                            <a href="https://www.stawag.de/" target="_blank" title="STAWAG">
+                                <img src="~/sponsorlogos/43_10_stawag_nieuw_1_1.jpg" alt="STAWAG">
+                            </a>
+                        </li>
+                        <li class="sponsor col-2">
+                            <a href="https://www.wagner-mueller.de/startseite/" target="_blank" title="Wagner + Müller">
+                                <img src="~/sponsorlogos/43_10_wm_nieuw_1_1.jpg" alt="Wagner + Müller">
+                            </a>
+                        </li>
+                        <li class="sponsor col-2">
+                            <a href="https://www.frank-orthopädie.de/" target="_blank"
+                                title="Orthopädische Praxis Frank">
+                                <img src="~/sponsorlogos/43_marcello_frank_1.jpg" alt="Orthopädische Praxis Frank">
+                            </a>
+                        </li>
+                        <li class="sponsor col-2">
+                            <a href="https://www.holzwerk-etc.de/about-us-modern/" target="_blank" title="Holzwerk">
+                                <img src="~/sponsorlogos/43_holzwerk_logo_schwarz0001_00_1.jpg" alt="Holzwerk">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div id="sponsors-hook">
-                    <div class="row">
-                        <ul>
-                            <li class="sponsor col-2">
-                                <a href="https://www.viessmann.de/de/wohngebaeude/welche-heizung.html" target="_blank"
-                                    title="Viessmann">
-                                    <img src="~/sponsorlogos/43_10_viesman_new_1_1.jpg" alt="Viessmann">
-                                </a>
-                            </li>
-                            <li class="sponsor col-2">
-                                <a href="https://www.atesteo.com/" target="_blank" title="ATESTEO">
-                                    <img src="~/sponsorlogos/43_10_atesteo_nieuw_1_1.jpg" alt="ATESTEO">
-                                </a>
-                            </li>
-                            <li class="sponsor col-2">
-                                <a href="https://www.stawag.de/" target="_blank" title="STAWAG">
-                                    <img src="~/sponsorlogos/43_10_stawag_nieuw_1_1.jpg" alt="STAWAG">
-                                </a>
-                            </li>
-                            <li class="sponsor col-2">
-                                <a href="https://www.wagner-mueller.de/startseite/" target="_blank" title="Wagner + Müller">
-                                    <img src="~/sponsorlogos/43_10_wm_nieuw_1_1.jpg" alt="Wagner + Müller">
-                                </a>
-                            </li>
-                            <li class="sponsor col-2">
-                                <a href="https://www.frank-orthopädie.de/" target="_blank"
-                                    title="Orthopädische Praxis Frank">
-                                    <img src="~/sponsorlogos/43_marcello_frank_1.jpg" alt="Orthopädische Praxis Frank">
-                                </a>
-                            </li>
-                            <li class="sponsor col-2">
-                                <a href="https://www.holzwerk-etc.de/about-us-modern/" target="_blank" title="Holzwerk">
-                                    <img src="~/sponsorlogos/43_holzwerk_logo_schwarz0001_00_1.jpg" alt="Holzwerk">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                &copy; 2024 - RugbyClubAachenWeb - <a asp-area="" asp-page="/Privacy">Privacy</a>
-                <div class="foottxt">
-                    Impressum 2024 - RugbyClubAachenWeb - <a asp-area="" asp-page="/Impressum">Impressum</a>
-                </div>
-            </footer>
+            </div>
+        <div class="privacy">
+            &copy; 2024 - RugbyClubAachen - <a asp-area="" asp-page="/Privacy" style="color: #fff;">Privacy</a>
+            &reg; 2024 - <a asp-area="" asp-page="/Impressum" style="color: #fff;">Impressum</a>
         </div>
+    </footer>
+    </div>
 
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
