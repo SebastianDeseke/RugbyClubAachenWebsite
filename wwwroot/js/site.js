@@ -4,52 +4,64 @@
 // Write your JavaScript code.
 
 $(document).ready(function () {
-    $('.dropdown-item').click(function () {
-        var language = $(this).attr('id');
+  $(".dropdown-item").click(function () {
+    var language = $(this).attr("id");
 
-        $.ajax({
-            url: '/Language?language=' + language,
-            type: 'GET',
-            data: { Language: language },
-            success: function (response) {
-                console.log(response);
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        });
+    $.ajax({
+      url: "/Language?language=" + language,
+      type: "GET",
+      data: { Language: language },
+      success: function (response) {
+        console.log(response);
+      },
+      error: function (error) {
+        console.log(error);
+      },
     });
+  });
 });
 
-// File upload validation
-const file = this.files[0];
-const  fileType = file['type'];
-const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
-if (!validImageTypes.includes(fileType)) {
+// File upload validation images
+function validateImage() {
+  const file = this.files[0];
+  const fileType = file["type"];
+  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+  if (!validImageTypes.includes(fileType)) {
     // invalid file type code goes here.
-    alert('invalid file type');
+    alert("invalid file type");
+  }
+}
+
+// File upload validation forms (pdf)
+function validateFile() {
+  const file = this.files[0];
+  const fileType = file["type"];
+  const validFileTypes = ["application/pdf"];
+  if (!validFileTypes.includes(fileType)) {
+    // invalid file type code goes here.
+    alert("invalid file type");
+  }
 }
 
 //Sticky sponsor footer (Chat GPT)
-$(document).ready(function(){
-    var sponsorSection = $('.sponsors');
-    var footer = $('.footer');
-    var footerOffset = footer.offset().top;
+function stickySponsor() {
+  var sponsorSection = $(".sponsors");
+  var footer = $(".footer");
+  var footerOffset = footer.offset().top;
 
-    $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > footerOffset) {
-            sponsorSection.css({
-                'position': 'absolute',
-                'bottom': '20px',
-                'width': '100%'
-            });
-        } else {
-            sponsorSection.css({
-                'position': 'fixed',
-                'bottom': '0',
-                'width': '100%'
-            });
-        }
-    });
-});
-
+  $(window).scroll(function () {
+    if ($(window).scrollTop() + $(window).height() > footerOffset) {
+      sponsorSection.css({
+        position: "absolute",
+        bottom: "20px",
+        width: "100%",
+      });
+    } else {
+      sponsorSection.css({
+        position: "fixed",
+        bottom: "0",
+        width: "100%",
+      });
+    }
+  });
+}

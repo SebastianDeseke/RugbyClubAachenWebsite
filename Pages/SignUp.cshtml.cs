@@ -41,7 +41,7 @@ public class SignUpModel : PageModel
 
     public string FileNameGenerator()
     {
-        return firstname + lastname + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+        return firstname + lastname + "Anmeldung.pdf";
     }
 
     [BindProperty]
@@ -49,7 +49,7 @@ public class SignUpModel : PageModel
     public async Task OnPostUploadAsync()
     {
         // to send the data to the database and use the User Fetcher to create a new user for the form
-        var file = Path.Combine("~/files", FileNameGenerator());
+        var file = Path.Combine("~/files/", FileNameGenerator());
         using (var fileStream = new FileStream(file, FileMode.Create))
         {
             await UploadFile.CopyToAsync(fileStream);

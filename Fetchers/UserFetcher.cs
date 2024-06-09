@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using RugbyClubAachenWeb.Database;
@@ -32,6 +33,18 @@ public class UserFetcher
     {
         _db.EditUser(UID, UpdateInput, UpdateValue);
         Console.WriteLine("User is edited");
+    }
+
+    public void PasswordCheck(string password)
+    {
+        //https://uibakery.io/regex-library/password-regex-csharp
+        Regex rgx = new Regex ("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$");
+        if (rgx.IsMatch(password)){
+            Console.WriteLine("Password is valid");
+
+        } else {
+            Console.WriteLine("Password is invalid");
+        }
     }
 
     public void CreateUser()

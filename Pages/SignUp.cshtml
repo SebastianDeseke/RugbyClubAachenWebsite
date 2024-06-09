@@ -15,14 +15,13 @@
 <form method="post">
     <dl>
         <dt>
-            <label asp-for="firstname">Name</label>
+            <label asp-for="firstname">First Name</label>
         </dt>
         <dd>
             <input asp-for="firstname" type="text">
-            <span asp-validation-for="firstname">Name is required</span>
         </dd>
         <dt>
-            <label asp-for="lastname">Lastname</label>
+            <label asp-for="lastname">* Last Name</label>
         </dt>
         <dd>
             <input asp-for="lastname">
@@ -77,6 +76,18 @@
             <span asp-validation-for="country">Country is required</span>
         </dd>
     </dl>
+
+    <p>Please choose what you want to be in club:</p>
+    <input type="radio" id="player" name="player" value="player">
+    <label for="playing">Player</label><br>
+    <input type="radio" id="u18" name="u18" value="u18">
+    <label for="u18">Youth between 14 and 18</label><br>
+    <input type="radio" id="yu11" name="yu11" value="yu11">
+    <label for="yu11">Youth under 11</label><br>
+    <input type="radio" id="yo12" name="yo12" value="yo12">
+    <label for="yo12">Youth over 12</label><br>
+    <input type="radio" id="passive" name="passive" value="passive">
+    <label for="passive">Passive (Donations)</label><br>
     <input class="btn" type="submit" value="Submit">
 </form>
 
