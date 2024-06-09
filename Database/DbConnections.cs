@@ -28,11 +28,11 @@ public class DbConnections
         connection.Close();
     }
 
-
-    public void CreateUser(string UID, string username, string name, string surname, string Email, string create_time, string password)
+    //User methods (have to redo because of database structure change)
+    public void CreateUser(string username, string firstName, string lastName, string email, string create_time, string password)
     {
         string sqlQuery = @"INSERT INTO 
-        users (UID, username, name, surname, Email, create_time, password)
+        users ( username, firstname, lastName, email, permission, roleId signupDate, password)
         VALUES (@Value0, @Value1, @Value2, @Value3, @Value4, @Value5, @Value6)";
 
         // Set up a command object with your SQL query and connection
@@ -40,13 +40,14 @@ public class DbConnections
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
         // Set the parameter values for your query
-        command.Parameters.AddWithValue("@Value0", UID);
-        command.Parameters.AddWithValue("@Value1", username);
-        command.Parameters.AddWithValue("@Value2", name);
-        command.Parameters.AddWithValue("@Value3", surname);
-        command.Parameters.AddWithValue("@Value4", Email);
-        command.Parameters.AddWithValue("@Value5", create_time);
-        command.Parameters.AddWithValue("@Value6", password);
+        command.Parameters.AddWithValue("@Value0", username);
+        command.Parameters.AddWithValue("@Value1", firstName);
+        command.Parameters.AddWithValue("@Value2", lastName);
+        command.Parameters.AddWithValue("@Value3", email);
+        command.Parameters.Add("4");// by default user is on player permission, so 4
+        command.Parameters.Add("1");// by default user is on player role, so 1
+        command.Parameters.AddWithValue("@Value4", create_time);
+        command.Parameters.AddWithValue("@Value5", password);// have to read up on how to hash it before reading it in
 
         // Execute the query
         command.ExecuteNonQuery();
@@ -120,11 +121,14 @@ public class DbConnections
         return userinfo;
     }
 
-    public void UploadForm()
+    //Form methods (not implemented yet)
+    public void CreateForm()
     {
         //Insert Into the database the information of the form
 
     }
+
+    //Picture methods (works)
 
     public void CreatePicture(string PictureID, string PicturePath, string AltText, string Author, string UploadTime)
     {

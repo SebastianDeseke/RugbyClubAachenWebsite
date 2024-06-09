@@ -28,8 +28,15 @@ public class UserFetcher
         Console.WriteLine("User is loaded");
     }
 
-    public void EditUser(string UID, string UpdateInput, string UpdateValue) {
+    public void EditUser(string UID, string UpdateInput, string UpdateValue)
+    {
         _db.EditUser(UID, UpdateInput, UpdateValue);
         Console.WriteLine("User is edited");
+    }
+
+    public void CreateUser()
+    {
+        var create_time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        Console.WriteLine("User is created");
     }
 }

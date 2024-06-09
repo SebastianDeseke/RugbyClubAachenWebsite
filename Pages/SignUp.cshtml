@@ -1,0 +1,95 @@
+@page
+@model SignUpModel
+@{
+    ViewData["Title"] = "Sign up form for new users";
+}
+
+<h1>Sign up form</h1>
+<h3>Please fill in your information here</h3>
+<p>This information is needed to sign up for the club. Your request will be processed within 2 weeks. You are still
+    welcome to join training, just be aware that you will not be ensured or registered, which means if asked to not
+    participate in certain activities, please oblige.</p>
+<p><strong>Please fill in the information as correct and true as possible</strong></p>
+
+<!-- All the variables will be have a input here -->
+<form method="post">
+    <dl>
+        <dt>
+            <label asp-for="firstname">Name</label>
+        </dt>
+        <dd>
+            <input asp-for="firstname" type="text">
+            <span asp-validation-for="firstname">Name is required</span>
+        </dd>
+        <dt>
+            <label asp-for="lastname">Lastname</label>
+        </dt>
+        <dd>
+            <input asp-for="lastname">
+            <span asp-validation-for="lastname">Lastname is required</span>
+        </dd>
+        <dt>
+            <label asp-for="username">Username</label>
+        </dt>
+        <dd>
+            <input asp-for="username">
+            <span asp-validation-for="username">Username is required</span>
+        <dt>
+            <label asp-for="email"></label>
+        </dt>
+        <dd>
+            <input asp-for="email">
+            <span asp-validation-for="email">Email is required</span>
+        </dd>
+        <dt>
+            <label asp-for="phonenumber"></label>
+        </dt>
+        <dd>
+            <input asp-for="phonenumber">
+            <span asp-validation-for="phonenumber">Phone number is required</span>
+        </dd>
+        <dt>
+            <label asp-for="address"></label>
+        </dt>
+        <dd>
+            <input asp-for="address">
+            <span asp-validation-for="address">Address is required</span>
+        </dd>
+        <dt>
+            <label asp-for="zipcode"></label>
+        </dt>
+        <dd>
+            <input asp-for="zipcode">
+            <span asp-validation-for="zipcode">Zip code is required</span>
+        </dd>
+        <dt>
+            <label asp-for="city"></label>
+        </dt>
+        <dd>
+            <input asp-for="city">
+            <span asp-validation-for="city">City is required</span>
+        </dd>
+        <dt>
+            <label asp-for="country"></label>
+        </dt>
+        <dd>
+            <input asp-for="country">
+            <span asp-validation-for="country">Country is required</span>
+        </dd>
+    </dl>
+    <input class="btn" type="submit" value="Submit">
+</form>
+
+<!-- The form for uploading files -->
+<form enctype="multipart/form-data" method="post">
+    <dl>
+        <dt>
+            <label asp-for="UploadFile"></label>
+        </dt>
+        <dd>
+            <input asp-for="UploadFile" type="file" multiple>
+            <span asp-validation-for="UploadFile">Filetype incompatable</span>
+        </dd>
+    </dl>
+    <input asp-page-handler="UploadFile" class="btn" type="submit" value="UploadFile" />
+</form>
