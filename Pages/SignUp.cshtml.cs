@@ -39,22 +39,37 @@ public class SignUpModel : PageModel
 
     }
 
-    public string FileNameGenerator()
+    public bool FileNameChecker()
     {
-        return firstname + lastname + "Anmeldung.pdf";
+        var check = firstname + lastname + "Anmeldung.pdf";
+        var check2 = firstname + lastname + "Einwilligung.pdf";
+        if (UploadFile.FileName == check || UploadFile.FileName == check2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     [BindProperty]
     public IFormFile UploadFile { get; set; }
     public async Task OnPostUploadAsync()
     {
-        // to send the data to the database and use the User Fetcher to create a new user for the form
-        var file = Path.Combine("~/files/", FileNameGenerator());
-        using (var fileStream = new FileStream(file, FileMode.Create))
+        if (FileNameChecker())
         {
-            await UploadFile.CopyToAsync(fileStream);
+            // to send the data to the database and use the User Fetcher to create a new user for the form
+            var file = Path.Combine("~/files/", UploadFile.FileName);
+            using (var fileStream = new FileStream(file, FileMode.Create))
+            {
+                await UploadFile.CopyToAsync(fileStream);
+            }
         }
-
+        else
+        {
+            throw new Exception("The file name is not correct");
+        }
     }
 
     public void OnGet()
