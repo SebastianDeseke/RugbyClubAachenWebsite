@@ -1,3 +1,8 @@
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Options;
+using Org.BouncyCastle.Ocsp;
 using RugbyClubAachenWeb.Database;
 using RugbyClubAachenWeb.Fetchers;
 using RugbyClubAachenWeb.Pages;
@@ -11,6 +16,30 @@ builder.Services.AddRazorPages();
 builder.Services.AddTransient<PictureFetcher>();
 builder.Services.AddTransient<DbConnections>();
 
+//Services for multi language support
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.Configure<RequestLocalizationOptions> (options =>
+{
+    var supportedCultures = new []
+    {
+        new CultureInfo("en"),
+        new CultureInfo("de"),
+        new CultureInfo("nl"),
+        new CultureInfo("fr"),
+        new CultureInfo("afr")
+    };
+    options.DefaultRequestCulture = new RequestCulture("en");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+});
+
+builder.Services.AddRazorPages()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization(options => {
+        options.DataAnnotationLocalizerProvider = (type, factory) =>
+            factory.Create(typeof(SharedResource));
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,6 +49,11 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+var localizationOptions = app.Services
+    .GetService<IOptions<RequestLocalizationOptions>>()
+    .Value;
+app.UseRequestLocalization(localizationOptions);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -31,5 +65,9 @@ app.UseAuthorization();
 app.UseRequestLocalization();
 
 app.MapRazorPages();
+
+// Apply localization settings
+var locOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>();
+app.UseRequestLocalization(locOptions.Value);
 
 app.Run();

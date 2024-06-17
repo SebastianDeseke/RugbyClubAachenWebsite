@@ -1,0 +1,22 @@
+@page
+@model DownloadsModel
+@{
+    ViewData["Title"] = "Downloads";
+}
+
+<h1>Downloads</h1>
+
+<p>Here you can download the latest documents and files that are required to apply for the club</p>
+
+<div class="row main-content">
+    <div class="row">
+        <div class="col-md-6">
+        <h2>Application form</h2>
+        <a asp-page="/Downloads/ApplicationForm" class="btn btn-primary">Download</a>
+    </div>
+    <div class="col-md-6">
+        <h2>Medical form</h2>
+        <a asp-page="/Downloads/MedicalCertificate" class="btn btn-primary">Download</a>
+    </div>
+    </div>
+</div>
