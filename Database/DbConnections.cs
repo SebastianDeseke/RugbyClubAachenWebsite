@@ -1,4 +1,5 @@
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Utilities;
 
 namespace RugbyClubAachenWeb.Database;
 
@@ -28,18 +29,17 @@ public class DbConnections
         connection.Close();
     }
 
-    //User methods (have to redo because of database structure change)
+    //User methods
     public void CreateUser(string username, string firstName, string lastName, string email, string create_time, string password)
     {
         string sqlQuery = @"INSERT INTO 
-        users ( username, firstname, lastName, email, permission, roleId signupDate, password)
+        users ( username, firstname, lastName, email, permission, roleId, signupDate, password)
         VALUES (@Value0, @Value1, @Value2, @Value3, @Value4, @Value5, @Value6)";
 
-        // Set up a command object with your SQL query and connection
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
-        // Set the parameter values for your query
+        // Set the parameter values for the query
         command.Parameters.AddWithValue("@Value0", username);
         command.Parameters.AddWithValue("@Value1", firstName);
         command.Parameters.AddWithValue("@Value2", lastName);
@@ -49,14 +49,14 @@ public class DbConnections
         command.Parameters.AddWithValue("@Value4", create_time);
         command.Parameters.AddWithValue("@Value5", password);// have to read up on how to hash it before reading it in
 
-        // Execute the query
         command.ExecuteNonQuery();
         command.Dispose();
         Disconnect();
     }
 
-    public void EditUser(string UID, string UpdateInput, string UpdateValue)
+    public void EditUser(string username, string UpdateInput, string UpdateValue)
     {
+        int UID = GetUserID(username);
         string sqlQuery = @$"UPDATE users
         SET {UpdateInput} = @UpdateValue
         WHERE UID = @UID";
@@ -89,7 +89,37 @@ public class DbConnections
 
     }
 
-    public string[] GetSingleUser(string UID)
+    public int GetUserID(string username)
+    {
+        string sqlQuery = @"SELECT UID 
+                            FROM users
+                            WHERE username = @username";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.Parameters.AddWithValue("@username", username);
+
+        int UID = -1;
+        try
+        {
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    UID = reader.GetInt32(0);
+                }
+            }
+        }
+        finally
+        {
+            command.Dispose();
+            Disconnect();
+        }
+        return UID;
+    }
+
+    public string[] GetUserInfo(int UID)
     {
         string sqlQuery = @"SELECT * FROM users
         WHERE UID = @UID";
@@ -122,14 +152,42 @@ public class DbConnections
     }
 
     //Form methods (not implemented yet)
-    public void CreateForm()
+    public void CreateForm(string username, string [] FormFilled)
     {
+        int UID = GetUserID(username);
         //Insert Into the database the information of the form
+        string sqlQuery = @"INSERT INTO 
+                            forms (UID, statusId, firstName, middelName,lastName, email, telephone, birthDate, sex, nationality, datenschutz, SEPA, u18, street, housenr, zip, city, land)
+                            VALUES (@Value0, @Value1, @Value2, @Value3, @Value4, @Value5, @Value6, @Value7, @Value8, @Value9, @Value10, @Value11, @Value12, @Value13, @Value14, @Value15, @Value16, @Value17)";
 
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.Parameters.AddWithValue("@Value0", UID);
+        command.Parameters.AddWithValue("@Value1", 1);//by default the status is 1, which means that the form is not yet processed
+        command.Parameters.AddWithValue("@Value2", FormFilled[0]);
+        command.Parameters.AddWithValue("@Value3", FormFilled[1]);
+        command.Parameters.AddWithValue("@Value4", FormFilled[2]);
+        command.Parameters.AddWithValue("@Value5", FormFilled[3]);
+        command.Parameters.AddWithValue("@Value6", FormFilled[4]);
+        command.Parameters.AddWithValue("@Value7", FormFilled[5]);
+        command.Parameters.AddWithValue("@Value8", FormFilled[6]);
+        command.Parameters.AddWithValue("@Value9", FormFilled[7]);
+        command.Parameters.AddWithValue("@Value10", FormFilled[8]);
+        command.Parameters.AddWithValue("@Value11", FormFilled[9]);
+        command.Parameters.AddWithValue("@Value12", FormFilled[10]);
+        command.Parameters.AddWithValue("@Value13", FormFilled[11]);
+        command.Parameters.AddWithValue("@Value14", FormFilled[12]);
+        command.Parameters.AddWithValue("@Value15", FormFilled[13]);
+        command.Parameters.AddWithValue("@Value16", FormFilled[14]);
+        command.Parameters.AddWithValue("@Value17", FormFilled[15]);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
     }
 
     //Picture methods (works)
-
     public void CreatePicture(string PictureID, string PicturePath, string AltText, string Author, string UploadTime)
     {
         string sqlQuery = @"INSERT INTO

@@ -6,6 +6,7 @@ using Org.BouncyCastle.Ocsp;
 using RugbyClubAachenWeb.Database;
 using RugbyClubAachenWeb.Fetchers;
 using RugbyClubAachenWeb.Pages;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddRazorPages();
 //TODO: Add the file that feches the imagepathes to be injected in Layout.cshtml
 builder.Services.AddTransient<PictureFetcher>();
 builder.Services.AddTransient<DbConnections>();
+builder.Services.AddTransient<UserFetcher>();
+//
+builder.Services.AddSingleton<IPasswordHasher<UserFetcher>, PasswordHasher<UserFetcher>>();
 
 //Services for multi language support
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
@@ -25,7 +29,7 @@ builder.Services.Configure<RequestLocalizationOptions> (options =>
         new CultureInfo("en"),
         new CultureInfo("de"),
         new CultureInfo("nl"),
-        new CultureInfo("fr"),
+        // new CultureInfo("fr"),
         new CultureInfo("afr")
     };
     options.DefaultRequestCulture = new RequestCulture("en");
@@ -37,8 +41,17 @@ builder.Services.AddRazorPages()
     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
     .AddDataAnnotationsLocalization(options => {
         options.DataAnnotationLocalizerProvider = (type, factory) =>
-            factory.Create(typeof(SharedResource));
+            factory.Create(typeof(LanguageViewLocationExpander));// was typeof(SharedResource);
     });
+
+
+builder.Services.Configure<PasswordHasherOptions>(options =>
+{
+    options.IterationCount = 10000;
+});
+
+// Register your UserFetcher
+builder.Services.AddTransient<UserFetcher>();
 
 var app = builder.Build();
 

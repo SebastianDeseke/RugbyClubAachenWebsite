@@ -3,16 +3,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Localization;
 
 namespace RugbyClubAachenWeb.Pages;
 
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IStringLocalizer<IndexModel> _localizer;
 
-    public IndexModel(ILogger<IndexModel> logger)
+    public IndexModel(ILogger<IndexModel> logger, IStringLocalizer<IndexModel> localizer, IHttpContextAccessor httpContextAccessor)
     {
         _logger = logger;
+        _localizer = localizer;
+        _httpContextAccessor = httpContextAccessor;
     }
 
         private object getLanguage(HttpRequest request)
