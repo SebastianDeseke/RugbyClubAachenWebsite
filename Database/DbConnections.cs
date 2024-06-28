@@ -33,21 +33,21 @@ public class DbConnections
     public void CreateUser(string username, string firstName, string lastName, string email, string create_time, string password)
     {
         string sqlQuery = @"INSERT INTO 
-        users ( username, firstname, lastName, email, permission, roleId, signupDate, password)
-        VALUES (@Value0, @Value1, @Value2, @Value3, @Value4, @Value5, @Value6)";
+        users (username, firstname, lastName, email, permission, roleId, signupDate, password)
+        VALUES (@username, @firstname, @lastname, @email, @permission, @create_time, @roleId, @password)";
 
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
         // Set the parameter values for the query
-        command.Parameters.AddWithValue("@Value0", username);
-        command.Parameters.AddWithValue("@Value1", firstName);
-        command.Parameters.AddWithValue("@Value2", lastName);
-        command.Parameters.AddWithValue("@Value3", email);
+        command.Parameters.AddWithValue("@username", username);
+        command.Parameters.AddWithValue("@firstname", firstName);
+        command.Parameters.AddWithValue("@lastname", lastName);
+        command.Parameters.AddWithValue("@email", email);
         command.Parameters.Add("4");// by default user is on player permission, so 4
         command.Parameters.Add("1");// by default user is on player role, so 1
-        command.Parameters.AddWithValue("@Value4", create_time);
-        command.Parameters.AddWithValue("@Value5", password);// have to read up on how to hash it before reading it in
+        command.Parameters.AddWithValue("@create_time", create_time);
+        command.Parameters.AddWithValue("@password", password);
 
         command.ExecuteNonQuery();
         command.Dispose();
@@ -157,30 +157,30 @@ public class DbConnections
         int UID = GetUserID(username);
         //Insert Into the database the information of the form
         string sqlQuery = @"INSERT INTO 
-                            forms (UID, statusId, firstName, middelName,lastName, email, telephone, birthDate, sex, nationality, datenschutz, SEPA, u18, street, housenr, zip, city, land)
-                            VALUES (@Value0, @Value1, @Value2, @Value3, @Value4, @Value5, @Value6, @Value7, @Value8, @Value9, @Value10, @Value11, @Value12, @Value13, @Value14, @Value15, @Value16, @Value17)";
+                            forms (UID, statusId, firstName, middelName, lastName, email, telephone, birthDate, sex, nationality, datenschutz, SEPA, u18, street, housenr, zip, city, land)
+                            VALUES (@UID, @statusId, @firstName, @middelName, @lastName, @email, @telephone, @birthDate, @sex, @nationality, @datenschutz, @SEPA, @u18, @street, @housnr, @zip, @city, @land)";
 
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
-        command.Parameters.AddWithValue("@Value0", UID);
-        command.Parameters.AddWithValue("@Value1", 1);//by default the status is 1, which means that the form is not yet processed
-        command.Parameters.AddWithValue("@Value2", FormFilled[0]);
-        command.Parameters.AddWithValue("@Value3", FormFilled[1]);
-        command.Parameters.AddWithValue("@Value4", FormFilled[2]);
-        command.Parameters.AddWithValue("@Value5", FormFilled[3]);
-        command.Parameters.AddWithValue("@Value6", FormFilled[4]);
-        command.Parameters.AddWithValue("@Value7", FormFilled[5]);
-        command.Parameters.AddWithValue("@Value8", FormFilled[6]);
-        command.Parameters.AddWithValue("@Value9", FormFilled[7]);
-        command.Parameters.AddWithValue("@Value10", FormFilled[8]);
-        command.Parameters.AddWithValue("@Value11", FormFilled[9]);
-        command.Parameters.AddWithValue("@Value12", FormFilled[10]);
-        command.Parameters.AddWithValue("@Value13", FormFilled[11]);
-        command.Parameters.AddWithValue("@Value14", FormFilled[12]);
-        command.Parameters.AddWithValue("@Value15", FormFilled[13]);
-        command.Parameters.AddWithValue("@Value16", FormFilled[14]);
-        command.Parameters.AddWithValue("@Value17", FormFilled[15]);
+        command.Parameters.AddWithValue("UID", UID);
+        command.Parameters.AddWithValue("@statusId", 1);//by default the status is 1, which means that the form is not yet processed
+        command.Parameters.AddWithValue("@firstName", FormFilled[0]);
+        command.Parameters.AddWithValue("@middelName", FormFilled[1]);
+        command.Parameters.AddWithValue("@lastName", FormFilled[2]);
+        command.Parameters.AddWithValue("@email", FormFilled[3]);
+        command.Parameters.AddWithValue("@telephone", FormFilled[4]);
+        command.Parameters.AddWithValue("@birthDate", FormFilled[5]);
+        command.Parameters.AddWithValue("@sex", FormFilled[6]);
+        command.Parameters.AddWithValue("@nationality", FormFilled[7]);
+        command.Parameters.AddWithValue("@datenschutz", FormFilled[8]);
+        command.Parameters.AddWithValue("@SEPA", FormFilled[9]);
+        command.Parameters.AddWithValue("@u18", FormFilled[10]);
+        command.Parameters.AddWithValue("@street", FormFilled[11]);
+        command.Parameters.AddWithValue("@housnr", FormFilled[12]);
+        command.Parameters.AddWithValue("@zip", FormFilled[13]);
+        command.Parameters.AddWithValue("@city", FormFilled[14]);
+        command.Parameters.AddWithValue("@land", FormFilled[15]);
 
         command.ExecuteNonQuery();
         command.Dispose();
@@ -192,16 +192,16 @@ public class DbConnections
     {
         string sqlQuery = @"INSERT INTO
             pictures (pictureID, picturepath, altText, author, upload_time)
-            VALUES (@Value0, @Value1, @Value2, @Value3, @Value4)";
+            VALUES (@pictureID, @picturepath, @altText, @author, @upload_time)";
 
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
-        command.Parameters.AddWithValue("@Value0", PictureID);
-        command.Parameters.AddWithValue("@Value1", PicturePath);
-        command.Parameters.AddWithValue("@Value2", AltText);
-        command.Parameters.AddWithValue("@Value3", Author);
-        command.Parameters.AddWithValue("@Value4", UploadTime);
+        command.Parameters.AddWithValue("@pictureID", PictureID);
+        command.Parameters.AddWithValue("@picturepath", PicturePath);
+        command.Parameters.AddWithValue("@altText", AltText);
+        command.Parameters.AddWithValue("@author", Author);
+        command.Parameters.AddWithValue("@upload_time", UploadTime);
 
         command.ExecuteNonQuery();
         command.Dispose();
