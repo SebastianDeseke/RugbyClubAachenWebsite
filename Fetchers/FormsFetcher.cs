@@ -24,7 +24,7 @@ public class FormsFetcher
         Console.WriteLine("Forms are loaded");
     }
 
-    public string createBody()
+    public string CreateBody()
     {
         /*This is the body of the email that will be sent to the user by combining all 
         the anwsers and making a cohesive email that can be sent to the respective parties, 
@@ -33,7 +33,7 @@ public class FormsFetcher
     }
 
     /* I will have to make a que or a buffer, to prevent more than 10 emails to be sent at once.
-This will ensure that we negate the oppertunity to hack the smtp service*/
+    This will ensure that we negate the oppertunity to hack the smtp service*/
     public void SendEmail(string email, string fullName)
     {
         // Pdf files that are needed to register for the club

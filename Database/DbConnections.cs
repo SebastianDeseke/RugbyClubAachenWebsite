@@ -1,3 +1,4 @@
+using System.Xml;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Utilities;
 
@@ -152,7 +153,7 @@ public class DbConnections
     }
 
     //Form methods (not implemented yet)
-    public void CreateForm(string username, string [] FormFilled)
+    public void CreateForm(string username, string[] FormFilled)
     {
         int UID = GetUserID(username);
         //Insert Into the database the information of the form
@@ -327,5 +328,191 @@ public class DbConnections
         }
 
         return paths;
+    }
+
+    //Tutuorial methods (not implemented yet)
+    public void CreateTutorial(int uniqueId, int positionWiki, string positionName, string docrefs, string videoLink, string imagePath)
+    {
+        //positionWiki = position that the wiki is about, 1 - 15, with 16 being general for all positions
+        string sqlQuery = @"INSERT INTO
+            tutorial (uniqueId, positionWiki, positionName, docrefs, videoLink, imagePath)
+            VALUES (@uniqueId, @positionWiki, @positionName, @docrefs, @videoLink, @imagePath)";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.Parameters.AddWithValue("@uniqueId", uniqueId);
+        command.Parameters.AddWithValue("@positionWiki", positionWiki);
+        command.Parameters.AddWithValue("@positionName", positionName);
+        command.Parameters.AddWithValue("@docrefs", docrefs);
+        command.Parameters.AddWithValue("@videoLink", videoLink);
+        command.Parameters.AddWithValue("@imagePath", imagePath);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+    }
+
+    public void EditTutorial(int uniqueId, string UpdateInput, string UpdateValue)
+    {
+        string sqlQuery = @$"UPDATE tutorial
+        SET {UpdateInput} = @UpdateValue
+        WHERE uniqueId = {uniqueId}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.Parameters.AddWithValue("@UpdateValue", UpdateValue);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+    }
+
+    public void DeleteTutorial(int uniqueId)
+    {
+        string sqlQuery = @$"DELETE FROM tutorial
+        WHERE uniqueId = {uniqueId}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+    }
+
+    public string[] GetTutorial(int uniqueId)
+    {
+        string sqlQuery = @$"SELECT * FROM tutorial
+        WHERE uniqueId = {uniqueId}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        string[] tutorialinfo = new string[6];
+        try
+        {
+            using (var reader = command.ExecuteReader())
+            {
+                int index = 0;
+                while (reader.Read() && index < tutorialinfo.Length)
+                {
+                    tutorialinfo[index] = reader.GetString(index);
+                }
+            }
+        }
+        finally
+        {
+            command.Dispose();
+            Disconnect();
+        }
+        return tutorialinfo;
+    }
+
+    //permissions methods (not implemented yet)
+    public string[] GetPermissions(int permissionId)
+    {
+        string sqlQuery = @$"SELECT * FROM permissions
+        WHERE permissionId = {permissionId}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        string[] permissions = new string[8];
+        try
+        {
+            using (var reader = command.ExecuteReader())
+            {
+                int index = 0;
+                while (reader.Read() && index < permissions.Length)
+                {
+                    permissions[index] = reader.GetString(index);
+                    index++;
+                }
+            }
+        }
+        finally
+        {
+            command.Dispose();
+            Disconnect();
+        }
+        return permissions;
+    }
+
+    public void ChangeUserPermission (int userId, int newPermission) {
+        string sqlQuery = @$"UPDATE users
+                        SET permission = @newPermission
+                        WHERE UID = {userId}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+       command.Parameters.AddWithValue("@newPermission", newPermission);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+    }
+
+    //roles methods (not implemented yet)
+    public string[] GetRole (int roleId) {
+        string sqlQuery = @$"SELECT * FROM roles
+                        WHERE roleId = {roleId}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        string[] roleinfo = new string[8];
+        try
+        {
+            using (var reader = command.ExecuteReader())
+            {
+                int index = 0;
+                while (reader.Read() && index < roleinfo.Length)
+                {
+                    roleinfo[index] = reader.GetString(index);
+                    index++;
+                }
+            }
+        }
+        finally
+        {
+            command.Dispose();
+            Disconnect();
+        }
+        return roleinfo;
+    }
+
+    public void CreateRole (int roleId,string roleName, string roleDescription) {
+        string sqlQuery = @"INSERT INTO
+                        roles (roleId, roleName, roleDescription)
+                        VALUES (@roleId, @roleName, @roleDescription)";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+        command.Parameters.AddWithValue("@roleId", roleId);
+        command.Parameters.AddWithValue("@roleName", roleName);
+        command.Parameters.AddWithValue("@roleDescription", roleDescription);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
+    }
+
+    public void ChangeUserRole (int userId, int newRole) {
+        string sqlQuery = @$"UPDATE users
+                        SET roleId = @newRole
+                        WHERE UID = {userId}";
+
+        Connect();
+        MySqlCommand command = new MySqlCommand(sqlQuery, connection);
+
+       command.Parameters.AddWithValue("@newRole", newRole);
+
+        command.ExecuteNonQuery();
+        command.Dispose();
+        Disconnect();
     }
 }

@@ -9,11 +9,11 @@ namespace RugbyClubAachenWeb.Fetchers;
 
 public class UserFetcher
 {
-    private readonly PasswordHasher<UserFetcher> _passwordHasher;
     public string User { get; set; }
     public string[] Users { get; set; }
     private readonly DbConnections _db;
     private readonly IConfiguration _config;
+    private readonly PasswordHasher<UserFetcher> _passwordHasher;
 
     public UserFetcher(DbConnections db, IConfiguration config, PasswordHasher<UserFetcher> passwordHasher)
     {
@@ -27,11 +27,12 @@ public class UserFetcher
         Console.WriteLine("Users are loaded");
     }
 
-    public void GetSingleUserInfo(string username)
+    public string[] GetSingleUserInfo(string username)
     {
         int UID =_db.GetUserID(username);
-        _db.GetUserInfo(UID);
+        string[] userinfo = _db.GetUserInfo(UID);
         Console.WriteLine("User is loaded");
+        return userinfo;
     }
 
     public void EditUser(string username, string UpdateInput, string UpdateValue)
