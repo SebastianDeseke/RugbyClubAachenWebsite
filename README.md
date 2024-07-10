@@ -20,5 +20,5 @@ The Rugby Club Aachen website is a dynamic and multilingual web application desi
 
 ## Usage
 ### Prerequisites
-- [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
