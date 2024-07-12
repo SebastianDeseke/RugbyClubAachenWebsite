@@ -20,13 +20,11 @@ public class DbConnections
     public void Connect()
     {
         connection = new MySqlConnection(_config["ConnectionStrings:DatabaseConnection"]);
-        // Open the connection
         connection.Open();
     }
 
     public void Disconnect()
     {
-        // Close the connection
         connection.Close();
     }
 
@@ -40,7 +38,6 @@ public class DbConnections
         Connect();
         MySqlCommand command = new MySqlCommand(sqlQuery, connection);
 
-        // Set the parameter values for the query
         command.Parameters.AddWithValue("@username", username);
         command.Parameters.AddWithValue("@firstname", firstName);
         command.Parameters.AddWithValue("@lastname", lastName);
@@ -156,7 +153,6 @@ public class DbConnections
     public void CreateForm(string username, string[] FormFilled)
     {
         int UID = GetUserID(username);
-        //Insert Into the database the information of the form
         string sqlQuery = @"INSERT INTO 
                             forms (UID, statusId, firstName, middelName, lastName, email, telephone, birthDate, sex, nationality, datenschutz, SEPA, u18, street, housenr, zip, city, land)
                             VALUES (@UID, @statusId, @firstName, @middelName, @lastName, @email, @telephone, @birthDate, @sex, @nationality, @datenschutz, @SEPA, @u18, @street, @housnr, @zip, @city, @land)";
@@ -269,7 +265,6 @@ public class DbConnections
 
     public void GetAllPictures(int amount)
     {
-        //get all the pictures from the database
         string sqlQuery = @$"SELECT * FROM pictures LIMIT {amount}";
 
         Connect();
